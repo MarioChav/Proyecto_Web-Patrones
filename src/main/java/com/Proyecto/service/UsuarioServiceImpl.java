@@ -14,7 +14,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> getUsuarios() {
+    public List<Usuario> getUsuarios(boolean activos) {
         return (List<Usuario>)usuarioDao.findAll();
     }
 

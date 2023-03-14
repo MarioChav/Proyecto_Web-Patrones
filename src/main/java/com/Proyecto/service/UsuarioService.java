@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface UsuarioService {
     
-    public List<Usuario> getUsuarios();
+    public List<Usuario> getUsuarios(boolean activos);
     
     public Usuario getUsuario(Usuario usuario);
     
