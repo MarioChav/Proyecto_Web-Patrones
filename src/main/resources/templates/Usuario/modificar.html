@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
+        <title>Proyecto</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <h2> Datos de Usuario </h2>
+            <br/>
+            <a th:href="@{/usuario/listado}">Regresar</a>
+            <br/><br/>
+            <form th:action="@{/usuario/guardar}" method="post" th:object="${usuario}">
+                <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+
+                <label for="nombre">Nombre:</label>
+                <br/>
+                <input type="text" name="nombre" th:field="*{nombre}"/>
+                <br/>
+                <label for="apodo">Nombre de Usuario:</label>
+                <br/>
+                <input type="text" name="apodo" th:field="*{apodo}"/>
+                <br/>
+                <label for="clave">Clave:</label>
+                <br/>
+                <input type="text" name="clave" th:field="*{clave}"/>
+                <br/>
+                <label for="activo">Activo:</label>
+                <input type="checkbox" name="activo" th:field="*{activo}"/>
+                <br/><br/>
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form>
+        </div>
     </body>
 </html>
