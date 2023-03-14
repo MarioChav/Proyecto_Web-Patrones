@@ -5,12 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="usuario")
-public class Usuario {
+public class Usuario implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
@@ -18,21 +19,21 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario; //Transforma en id_cliente, hibernate lo hace
     String nombre;
-    String nombreUsuario;
+    String apodo;
     String clave;
     Boolean activo;
     
-    private Usuario usuario;
+    
 
     public Usuario() {
     }
 
-    public Usuario(Long idUsuario, String nombre, String nombreUsuario, String clave, Boolean activo, Usuario usuario) {
+    public Usuario(String nombre, String apodo, String clave, Boolean activo) {
         this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
+        this.apodo = apodo;
         this.clave = clave;
         this.activo = activo;
-        this.usuario = usuario;
     }
+
 }
     

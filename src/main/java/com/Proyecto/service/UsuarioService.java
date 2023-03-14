@@ -7,7 +7,7 @@ public interface UsuarioService {
     
     public List<Usuario> getUsuarios();
     
-    public Usuario getCliente(Usuario usuario);
+    public Usuario getUsuario(Usuario usuario);
     
     public void save(Usuario usuario); //Sirve para insertar y modificar un registro
     
