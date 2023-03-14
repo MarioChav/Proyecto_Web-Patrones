@@ -20,7 +20,6 @@ public class Cliente implements Serializable{
     private Long idCliente; //Transforma en id_cliente, hibernate lo hace
     String nombre;
     String apellidos;
-    String clave;
     String correo;
     String telefono;
     Boolean activo;
@@ -28,15 +27,13 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellidos, String clave, String correo, String telefono, Boolean activo) {
+    public Cliente(String nombre, String apellidos, String correo, String telefono, Boolean activo) {
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.clave = clave;
         this.correo = correo;
         this.telefono = telefono;
         this.activo = activo;
     }
-
 
 }
 
