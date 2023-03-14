@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Proyecto</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h2>Listado de Clientes</h2>
+            <br/>
+            <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
+            <br/><br/>
+            <div th:if="${clientes != null and !clientes.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>
+                            <th>Activo</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                            <td th:text="${cliente.nombre}"></td>
+                            <td th:text="${usuario.apellido}"></td>
+                            <td th:text="${usuario.correo}"></td>
+                            <td th:text="${usuario.telefono}"></td>
+                            <td> <input type="checkbox" name="activa" th:checked="${cliente.activo}" disabled="true"></td>
+                            <td><a th:href="@{/cliente/eliminar/} + ${cliente.idCliente}">Eliminar</a></td>
+                            <td><a th:href="@{/cliente/modificar/} + ${cliente.idCliente}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+            
+            <div th:if="${cliente == null or clientes.empty}">
+                No hay clientes que mostrar...
+            </div>
+
+        </div>
+    </body>
+</html>
