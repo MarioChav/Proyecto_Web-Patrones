@@ -10,11 +10,21 @@
             <nav class="navegador">
                 <a th:href="@{/}" class="logo link-navegador">Chrome Store</a>
                 <ul>
-                    
+
                 </ul>
-                
             </nav>
-            
+
         </header>
+        <footer th:fragment="footer" class="footer">
+            <p>&circledR; Derechos Reservados 2023</p>
+            <p>&COPY; Creado por Mario Chavarría, Steven Rodriguez, Gian Vasquez</p>
+            <form method="POST" th:action="@{/logout}"> 
+                <a href="#" onclick="this.parentNode.submit();" class="nav-link"> 
+                    <i class="fas fa-user-times">
+                    </i> Salir 
+                </a> 
+            </form> 
+        </footer>
+
     </body>
 </html>

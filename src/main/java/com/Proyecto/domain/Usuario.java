@@ -1,11 +1,7 @@
 package com.Proyecto.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.io.Serializable;
+import javax.persistence.*;
 import lombok.Data;
 
 @Data
@@ -23,8 +19,6 @@ public class Usuario implements Serializable {
     String clave;
     Boolean activo;
     
-    
-
     public Usuario() {
     }
 
