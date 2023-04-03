@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Proyecto</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h2> Datos de Categorias </h2>
+            <br/>
+            <a th:href="@{/categoria/listado}">Regresar</a>
+            <br/><br/>
+            <form th:action="@{/categoria/guardar}" method="post" th:object="${categoria}">
+                <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" th:field="*{nombre}"/> 
+                <br/>
+                <label for="activo">Activo:</label>
+                <input type="checkbox" name="activo" th:field="*{activo}"/>
+                <br/><br/>
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form>
+        </div>
+    </body>
+</html> 

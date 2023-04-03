@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Proyecto</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h2>Listado de Productos</h2>
+            <br/>
+            <a th:href="@{/producto/nuevo}">Nuevo Producto</a>
+            <br/><br/>
+            <div th:if="${productos != null and !productos.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Activo</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr th:each="producto : ${productos}">
+                            <td th:text="${producto.nombre}"></td>
+                            <td th:text="${producto.descripcion}"></td>
+                            <td th:text="${#numbers.formatDecimal(producto.precio,3,2)}" style="text-align: right"></td>
+                            <td th:text="${producto.cantidad}" style="text-align: center"></td>
+                            <td> <input type="checkbox" name="activa" th:checked="${producto.activo}" disabled="true"></td>
+                            <td><a th:href="@{/producto/eliminar/} + ${producto.idProducto}">Eliminar</a></td>
+                            <td><a th:href="@{/producto/modificar/} + ${producto.idProducto}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+            
+            <div th:if="${productos == null or productos.empty}">
+                No hay productos que mostrar...
+            </div>
+
+        </div>
+    </body>
+</html>

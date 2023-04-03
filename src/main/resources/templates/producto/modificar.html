@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h2> Datos de Productos </h2>
+            <br/>
+            <a th:href="@{/producto/listado}">Regresar</a>
+            <br/><br/>
+            <form th:action="@{/producto/guardar}" method="post" th:object="${producto}">
+                <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                <br/>
+                <label for="categoria">Categoria: </label>
+                <select th:field="*{idCategoria}">
+                    <option th:each="categoria: ${categorias}"
+                            th:value="${categoria.idCategoria}"
+                            th:text="${categoria.nombre}"/> 
+                    <br/> 
+                </select>
+                <br/>    
+                <label for="nombre">Nombre: </label>    
+                <input type="text" name="nombre" th:field="*{nombre}"/><br/>
+                <br/>
+                <label for="descripcion">Descripcion: </label>    
+                <input type="text" name="descripcion" th:field="*{descripcion}"/><br/>
+                <br/>   
+                <label for="precio">Precio: </label>
+                <input type="number" name="precio" th:field="*{precio}"/><br/>
+                <br/>
+                <label for="cantidad">Cantidad: </label><br/>
+                <input type="number" name="cantidad" th:field="*{cantidad}"/><br/>
+                <br/>
+                <label for="activo">Activo:</label>
+                <input type="checkbox" name="activo" th:field="*{activo}"/><br/><br/>
+                <br/><br/>
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form> 
+        </div>
+    </body> 
+</html>
