@@ -13,11 +13,13 @@
             <li class="lix"><a href="#contact"></a></li>
             <li class="lix"><a href="#about"></a></li> 
         </ul>
+        <div style="font-family: 'Poppins', sans-serif;">
 <ul class="ule">
     <li class="lie"><a class="active" href="#home">Inicio</a></li>
     <li  class="lie"><a href="#news">Clientes</a></li>
     <li  class="lie"><a href="#contact">Productos</a></li>
     <li  class="lie"><a href="#about">Categorias</a></li>
+    <li  class="lie"><a href="#about">Usuarios</a></li>
   </ul>
   
  
@@ -26,7 +28,7 @@
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
   <div class="w3-container">
-    <h1>Listado Clientes</h1>
+    <h1 >Listado Clientes</h1>
   </div>
 </div>
 
@@ -36,8 +38,9 @@
         <div class="content">
             <h2>Clientes</h2>
             <br/>
-            <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
+            <a style=" color: #57b846;   text-align: right; " th:href="@{/cliente/nuevo}">Nuevo Cliente +</a>
             <br/><br/>
+            <div class="boxx">
             <div th:if="${clientes != null and !clientes.empty}">
                 <table class="customers">
                     <thead>
@@ -49,6 +52,7 @@
                             <th>Telefono</th>
                             <th>Activo</th>
                             <th>Acción</th>
+                            <th></th>
                         </tr>
                     </thead>
                     
@@ -71,11 +75,14 @@
            
 
             </div>
+          
             <div th:if="${clientes == null or clientes.empty}">
                 No hay clientes que mostrar...
             </div>
+          </div>
         </div>
         </div>
+      </div>
     </body>
 </html>
 <style>
@@ -98,7 +105,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #74BA3E;
   color: white;
   clear: both;
 margin-top: 6px !important;
@@ -126,7 +133,7 @@ border-collapse: separate !important;
 }
 
 .lie a.active {
-  background-color: #04AA6D;
+  background-color: #74BA3E;
   color: white;
 }
 
@@ -140,7 +147,8 @@ border-collapse: separate !important;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #04AA6D;
+  background-color: #74BA3E;
+  height: 100%;
 }
 
 .lix {
@@ -160,7 +168,7 @@ border-collapse: separate !important;
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #74BA3E;
 }
 
 .box{
@@ -178,5 +186,18 @@ padding: 0px;
   margin-right: auto;
   margin-left: auto;
   margin-left:150px;
+  background-color: whitesmoke;
+  font-family: 'Poppins', sans-serif;
+}
+.boxx {
+  min-height: 250px;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-left:150px;
+  width: 1000PX;
+  border: 15px solid #74BA3E;
+ 
+  margin: 20px;
 }
 </style>
