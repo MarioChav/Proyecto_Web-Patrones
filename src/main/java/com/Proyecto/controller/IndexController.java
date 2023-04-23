@@ -14,13 +14,13 @@ public class IndexController {
     @Autowired
     UsuarioService usuarioService;
     
-    @RequestMapping("/")
+    @RequestMapping("/login")
     public String inicio(Model model) {
         
         var usuarios= usuarioService.getUsuarios(false);
         model.addAttribute("usuarios", usuarios);
         
-        return "index";
+        return "login";  
     }
     
 }

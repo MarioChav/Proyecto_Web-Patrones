@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Factura</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" >Close &times;</button>
+            <a href="../cliente/listado.html" class="w3-bar-item w3-button" >Clientes</a>
+
+            <a href="../producto/listado.html" class="w3-bar-item w3-button">Productos</a>
+            <a href="listado.html" class="w3-bar-item w3-button">Categorias</a>
+        </div>
+
+        <div class="w3-main" style="margin-left:200px">
+            <div class="w3-teal">
+                <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
+                <div class="w3-container">
+                    <h1>Crome</h1>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div>
+            <h2>Listado de Facturas</h2>
+            <br/>
+            <a th:href="@{/factura/nueva}">Nueva Factura</a>
+            <br/><br/>
+            <div th:if="${facturas != null and !facturas.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID Factura</th>
+                            <th>Producto</th>
+                            <th>Cliente</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="factura : ${facturas}">
+                            <td th:text="${factura.idFactura}"></td>
+                            <td th:text="${factura.idProducto}"></td>
+                            <td th:text="${factura.idCliente}"></td>
+                        </tr>
+                    </tbody>
+
+                </table> 
+
+            </div>
+
+            <div th:if="${facturas == null or facturas.empty}">
+                No hay categorias que mostrar...
+            </div>
+
+        </div>
+    </body>
+</html>
