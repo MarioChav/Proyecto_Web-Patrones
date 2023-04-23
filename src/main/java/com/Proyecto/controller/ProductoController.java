@@ -29,7 +29,6 @@ public class ProductoController {
     public String inicio(Model model) {
         var productos = productoService.getProductos(false);
         model.addAttribute("productos", productos);
-        
         return "/producto/listado";
     }
     

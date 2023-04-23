@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>Crome</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h2> Datos de Factura </h2>
+            <br/>
+            <a th:href="@{/factura/listado}">Regresar</a>
+            <br/><br/>
+            <form th:action="@{/factura/guardar}" method="post" th:object="${factura}">
+                <input type="hidden" name="idFactura" th:field="*{idFactura}"/>
+                <br/>
+                <label for="producto">Producto: </label>
+                <select th:field="*{idProducto}">
+                    <option th:each="producto: ${productos}"
+                            th:value="${producto.idProducto}"
+                            th:text="${producto.nombre}" 
+                            /> 
+                      
+                    
+                    <br/> 
+                </select>
+                <label for="clente">Cliente: </label>
+                <select th:field="*{idCliente}">
+                    <option th:each="cliente: ${clientes}" 
+                            th:value="${cliente.idCliente}"
+                            th:text="${cliente.nombre}"/> 
+                    <br/> 
+                </select> 
+
+                <label for="total">Total: </label>    
+                <input type="number" name="total" th:field="*{total}" value=1/><br/>
+                <br/>
+                
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form> 
+        </div>
+    </body> 
+</html>

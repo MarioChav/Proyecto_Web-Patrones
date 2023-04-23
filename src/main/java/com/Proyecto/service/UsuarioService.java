@@ -12,5 +12,5 @@ public interface UsuarioService {
     public void save(Usuario usuario); //Sirve para insertar y modificar un registro
     
     public void delete(Usuario usuario);
-    
-}
+        
+}   
