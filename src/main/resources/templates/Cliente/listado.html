@@ -7,44 +7,54 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large w3-hide-large" >Close &times;</button>
-  <a href="listado.html" class="w3-bar-item w3-button" >Clientes</a>
-
-  <a href="../categoria/listado.html" class="w3-bar-item w3-button">Productos</a>
-  <a href="../producto/listado.html" class="w3-bar-item w3-button">Categorias</a>
-</div>
+        <ul class="ulx">
+            <li class="lix"><a class="active" href="#home"></a></li>
+            <li class="lix"><a href="#news"></a></li>
+            <li class="lix"><a href="#contact"></a></li>
+            <li class="lix"><a href="#about"></a></li> 
+        </ul>
+<ul class="ule">
+    <li class="lie"><a class="active" href="#home">Inicio</a></li>
+    <li  class="lie"><a href="#news">Clientes</a></li>
+    <li  class="lie"><a href="#contact">Productos</a></li>
+    <li  class="lie"><a href="#about">Categorias</a></li>
+  </ul>
+  
+ 
 
 <div class="w3-main" style="margin-left:200px">
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
   <div class="w3-container">
-    <h1>Crome</h1>
+    <h1>Listado Clientes</h1>
   </div>
 </div>
 
 
    
 </div>
-        <div>
-            <h2>Listado de Clientes</h2>
+        <div class="content">
+            <h2>Clientes</h2>
             <br/>
             <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
             <br/><br/>
             <div th:if="${clientes != null and !clientes.empty}">
-                <table border="1">
+                <table class="customers">
                     <thead>
                         <tr>
+                          
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Correo</th>
                             <th>Telefono</th>
                             <th>Activo</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     
                     <tbody>
                         <tr th:each="cliente : ${clientes}">
+                         
                             <td th:text="${cliente.nombre}"></td>
                             <td th:text="${cliente.apellidos}"></td>
                             <td th:text="${cliente.correo}"></td>
@@ -57,12 +67,116 @@
 
                 </table>
 
-            </div>
             
+           
+
+            </div>
             <div th:if="${clientes == null or clientes.empty}">
                 No hay clientes que mostrar...
             </div>
-
+        </div>
         </div>
     </body>
 </html>
+<style>
+.customers{
+    font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+.customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color: #ddd;}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+  clear: both;
+margin-top: 6px !important;
+margin-bottom: 6px !important;
+max-width: none !important;
+border-collapse: separate !important;
+}
+
+.ule {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 10%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.lie a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.lie a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.lie a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.ulx {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #04AA6D;
+}
+
+.lix {
+  float: left;
+}
+
+.lix a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.lix a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+.box{
+    position: relative;
+border-top: 0;
+margin-bottom: 30px;
+width: 100%;
+background: #534444;
+border-radius: 10px;
+padding: 0px;
+}
+.content {
+  min-height: 250px;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-left:150px;
+}
+</style>
