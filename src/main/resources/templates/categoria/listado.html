@@ -5,6 +5,7 @@
     <head>
         <title>Proyecto</title>
         <meta charset="UTF-8">
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <ul class="ulx">
@@ -14,175 +15,61 @@
             <li class="lix"><a href="#about"></a></li> 
         </ul>
         <div style="font-family: 'Poppins', sans-serif;">
-<ul class="ule">
-    <li class="lie"><a class="active" href="#home">Inicio</a></li>
-    <li  class="lie"><a href="#news">Clientes</a></li>
-    <li  class="lie"><a href="#contact">Productos</a></li>
-    <li  class="lie"><a href="#about">Categorias</a></li>
-    <li  class="lie"><a href="#about">Usuarios</a></li>
-  </ul>
-  <div class="w3-main" style="margin-left:200px">
-<div class="w3-teal">
-  <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
-  <div class="w3-container">
-    <h1>Listado Categorias</h1>
-  </div>
-</div>
+            <ul class="ule">
+                <li class="lie"><a class="active" th:href="@{/}">Inicio</a></li>
+                <li  class="lie"><a th:href="@{/cliente/listado/}">Clientes</a></li>
+                <li  class="lie"><a th:href="@{/producto/listado/}">Productos</a></li>
+                <li  class="lie"><a th:href="@{/categoria/listado/}">Categorias</a></li>
+                <li  class="lie"><a th:href="@{/usuario/listado/}">Usuarios</a></li>
+                <li  class="lie"><a th:href="@{/factura/listado/}">Facturas</a></li>
+            </ul>
+            <div class="w3-main" style="margin-left:200px">
+                <div class="w3-teal">
+                    <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
+                    <div class="w3-container">
+                        <h1>Listado Categorias</h1>
+                    </div>
+                </div>
 
 
-   
-</div>
-        <div class="content">
-            <h2>Categorias</h2>
-            <br/>
-            
-            <a style=" color: #57b846;   text-align: right; " th:href="@{/categoria/nuevo}">Nuevo Categoria +</a>
-            <br/><br/>
-            <div class="boxx">
-            <div th:if="${categorias != null and !categorias.empty}">
-                <table class="customers">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Activo</th>
-                            <th>Acción</th>
-                            <th></th>
-                        </tr>   
-                    </thead>
-                    
-                    <tbody>
-                        <tr th:each="categoria : ${categorias}">
-                            <td th:text="${categoria.nombre}"></td>
-                            <td> <input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
-                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
-                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
-                        </tr>
-                    </tbody>
-
-                </table>
 
             </div>
-            
-            <div th:if="${categorias == null or categorias.empty}">
-                No hay categorias que mostrar...
+            <div class="content">
+                <h2>Categorias</h2>
+                <br/>
+
+                <a style=" color: #57b846;   text-align: right; " th:href="@{/categoria/nuevo}">Nuevo Categoria +</a>
+                <br/><br/>
+                <div class="boxx">
+                    <div th:if="${categorias != null and !categorias.empty}">
+                        <table class="customers">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Activo</th>
+                                    <th>Acción</th>
+                                    <th></th>
+                                </tr>   
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="categoria : ${categorias}">
+                                    <td th:text="${categoria.nombre}"></td>
+                                    <td> <input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
+                                    <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
+                                    <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div th:if="${categorias == null or categorias.empty}">
+                        No hay categorias que mostrar...
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     </body>
 </html>
-<style>    .customers{
-    font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-
-}
-.customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.customers tr:nth-child(even){background-color: #f2f2f2;}
-
-.customers tr:hover {background-color: #ddd;}
-
-.customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #74BA3E;
-  color: white;
-  clear: both;
-margin-top: 6px !important;
-margin-bottom: 6px !important;
-max-width: none !important;
-border-collapse: separate !important;
-}
-
-.ule {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 10%;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
-
-.lie a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.lie a.active {
-  background-color: #74BA3E;
-  color: white;
-}
-
-.lie a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-
-.ulx {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #74BA3E;
-  height: 100%;
-}
-
-.lix {
-  float: left;
-}
-
-.lix a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.lix a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #74BA3E;
-}
-
-.box{
-    position: relative;
-border-top: 0;
-margin-bottom: 30px;
-width: 100%;
-background: #534444;
-border-radius: 10px;
-padding: 0px;
-}
-.content {
-  min-height: 250px;
-  padding: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-left:150px;
-  background-color: whitesmoke;
-  font-family: 'Poppins', sans-serif;
-}
-.boxx {
-  min-height: 250px;
-  padding: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-left:150px;
-  width: 1000PX;
-  border: 15px solid #74BA3E;
- 
-  margin: 20px;
-}
-</style>
