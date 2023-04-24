@@ -2,6 +2,7 @@
 package com.Proyecto.controller;
 
 import com.Proyecto.domain.Producto;
+import com.Proyecto.service.BodegaService;
 import com.Proyecto.service.CategoriaService;
 import com.Proyecto.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProductoController {
     @Autowired
     CategoriaService categoriaService;
     
+    @Autowired
+    BodegaService bodegaService;
+    
     @RequestMapping("/producto/listado")
     public String inicio(Model model) {
         var productos = productoService.getProductos(false);
@@ -36,19 +40,23 @@ public class ProductoController {
     public String nuevoProducto(Producto producto, Model model){
         var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
+        var bodegas = bodegaService.getBodegas(true);
+        model.addAttribute("bodegas", bodegas);
         return "/producto/modificar";
     }
     
     @PostMapping("/producto/guardar")
     public String guardarProducto(Producto producto){
         productoService.save(producto);
-        return "redirect:/producto/listado";
+        return "redirect:/producto/listado"; 
     }
     
     @GetMapping("/producto/modificar/{idProducto}")
     public String modificarProducto(Producto producto, Model model){
         var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
+        var bodegas = bodegaService.getBodegas(true);
+        model.addAttribute("bodegas", bodegas);
         
         producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);

@@ -21,6 +21,7 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto; 
     private Long idCategoria;  
+    private Long idBodega;  
     String nombre;
     String descripcion;
     private double precio;
@@ -30,14 +31,17 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(Long idCategoria, String nombre, String descripcion, double precio, int cantidad, boolean activo) {
+    public Producto(Long idCategoria, Long idBodega, String nombre, String descripcion, double precio, int cantidad, boolean activo) {
         this.idCategoria = idCategoria;
+        this.idBodega = idBodega;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.cantidad = cantidad;
         this.activo = activo;
     }
+
+    
     
     
     

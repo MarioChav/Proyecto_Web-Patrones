@@ -8,6 +8,8 @@ import java.util.List;
  *
  * @author mario
  */
+
+
 public interface ProductoService {
     
     public List<Producto> getProductos(boolean activos);  

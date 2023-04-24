@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .withUser("user")
                 .password("{noop}123")
-                .roles("USER");
+                .roles("USER"); 
   
     }
 }

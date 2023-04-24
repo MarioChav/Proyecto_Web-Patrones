@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org" 
       xmlns="http://www.w3.org/1999/xhtml">
+
     <head>
-        <title>Proyecto</title>
+        <title>Crome</title>
         <meta charset="UTF-8">
     </head>
     <body>
@@ -15,73 +15,34 @@
         </ul>
         <div style="font-family: 'Poppins', sans-serif;">
 <ul class="ule">
-    <li class="lie"><a class="active" href="#home">Inicio</a></li>
-    <li  class="lie"><a href="#about">Usuarios</a></li>
-    <li  class="lie"><a href="#news">Clientes</a></li>
-    <li  class="lie"><a href="#contact">Productos</a></li>
-    <li  class="lie"><a href="#about">Categorias</a></li>
-    <li  class="lie"><a href="/bodega/listado/">Bodegas</a></li>
-    
+    <li class="lie"><a class="active" th:href="@{/}">Inicio</a></li>
+                <li  class="lie"><a th:href="@{/usuario/listado/}">Usuarios</a></li>
+                <li  class="lie"><a th:href="@{/cliente/listado/}">Clientes</a></li>
+                <li  class="lie"><a th:href="@{/producto/listado/}">Productos</a></li>
+                <li  class="lie"><a th:href="@{/categoria/listado/}">Categorias</a></li>
+                <li  class="lie"><a th:href="@{/bodega/listado/}">Bodegas</a></li>
+                <li  class="lie"><a th:href="@{/factura/listado/}">Facturas</a></li>
   </ul>
-  
- 
-
-<div class="w3-main" style="margin-left:200px">
-<div class="w3-teal">
-  <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
-  <div class="w3-container">
-    <h1>Listado Productos</h1>
-  </div>
-</div>
-
-
-   
-</div>
-<div class="content">
-            <h2>Productos</h2>
+        <div class="content">
+            <h2> Datos de Bodegas </h2>
             <br/>
-            <a style=" color: #57b846;   text-align: right; " th:href="@{/producto/nuevo}">Nuevo Producto +</a>
+            <a style="text-decoration: underline;" th:href="@{/bodega/listado}">Regresar</a>
             <br/><br/>
-            <div class="boxx">
-            <div th:if="${productos != null and !productos.empty}">
-                <table class="customers">
-                    <thead>
-                        <tr>
-                            <th>Bodega</th>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Activo</th>
-                            <th>Acción</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        <tr th:each="producto : ${productos}">
-                            <td th:text="${producto.idBodega}"></td>
-                            <td th:text="${producto.nombre}"></td>
-                            <td th:text="${producto.descripcion}"></td>
-                            <td th:text="${#numbers.formatDecimal(producto.precio,3,2)}" style="text-align: right"></td>
-                            <td th:text="${producto.cantidad}" style="text-align: center"></td>
-                            <td> <input type="checkbox" name="activa" th:checked="${producto.activo}" disabled="true"></td>
-                            <td><a th:href="@{/producto/eliminar/} + ${producto.idProducto}">Eliminar</a></td>
-                            <td><a th:href="@{/producto/modificar/} + ${producto.idProducto}">Modificar</a></td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </div>
-            
-            <div th:if="${productos == null or productos.empty}">
-                No hay productos que mostrar...
-            </div>
+            <form th:action="@{/bodega/guardar}" method="post" th:object="${bodega}">
+                <input type="hidden" name="idBodega" th:field="*{idBodega}"/>
+                <br/><br/>   
+                <label for="nombre">Nombre: </label>    
+                <input type="text" name="nombre" th:field="*{nombre}" class="form-control"/><br/>
+                <br/>
+                <label for="activo">Activo:</label>
+                <input type="checkbox" name="activo" th:field="*{activo}" /><br/><br/>
+                <br/><br/>
+                <input type="submit" name="guardar" value="Guardar" class="Guardar"/>
+            </form> 
         </div>
-        </div>
-    </body>
+    </body> 
 </html>
+
 <style>
     .customers{
         font-family: Arial, Helvetica, sans-serif;
@@ -197,4 +158,36 @@
      
       margin: 20px;
     }
+    .form-control {
+  display: block;
+  width: 50%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+    border-top-color: rgb(206, 212, 218);
+    border-right-color: rgb(206, 212, 218);
+    border-bottom-color: rgb(206, 212, 218);
+    border-left-color: rgb(206, 212, 218);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.Guardar {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
     </style>

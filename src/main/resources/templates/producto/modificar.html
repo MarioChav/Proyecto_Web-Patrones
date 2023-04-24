@@ -19,6 +19,7 @@
     <li  class="lie"><a href="#news">Clientes</a></li>
     <li  class="lie"><a href="#contact">Productos</a></li>
     <li  class="lie"><a href="#about">Categorias</a></li>
+    <li  class="lie"><a href="@{/bodega/listado/}">Bodegas</a></li>
   </ul>
         <div class="content">
             <h2> Datos de Productos </h2>
@@ -33,10 +34,15 @@
                     <option th:each="categoria: ${categorias}"
                             th:value="${categoria.idCategoria}"
                             th:text="${categoria.nombre}"/> 
-                        
-                    <br/> 
                 </select>
-                <br/>    
+                <br/><br/>   
+                <label for="bodega">Bodega: </label>
+                <select class="custom-select" style="width:200px;" th:field="*{idBodega}">
+                    <option th:each="bodega: ${bodegas}"
+                            th:value="${bodega.idBodega}"
+                            th:text="${bodega.nombre}"/> 
+                </select>
+                <br/><br/>   
                 <label for="nombre">Nombre: </label>    
                 <input type="text" name="nombre" th:field="*{nombre}" class="form-control"/><br/>
                 <br/>

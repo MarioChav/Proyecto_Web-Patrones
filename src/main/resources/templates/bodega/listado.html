@@ -28,7 +28,7 @@
                 <div class="w3-teal">
                     <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
                     <div class="w3-container">
-                        <h1>Listado Categorias</h1>
+                        <h1>Listado Bodegas</h1>
                     </div>
                 </div>
 
@@ -36,13 +36,13 @@
 
             </div>
             <div class="content">
-                <h2>Categorias</h2>
+                <h2>Bodegas</h2>
                 <br/>
 
-                <a style=" color: #57b846;   text-align: right; " th:href="@{/categoria/nuevo}">Nueva Categoria +</a>
+                <a style=" color: #57b846;   text-align: right; " th:href="@{/bodega/nuevo}">Nueva Bodega +</a>
                 <br/><br/>
                 <div class="boxx">
-                    <div th:if="${categorias != null and !categorias.empty}">
+                    <div th:if="${bodegas != null and !bodegas.empty}">
                         <table class="customers">
                             <thead>
                                 <tr>
@@ -54,11 +54,11 @@
                             </thead>
 
                             <tbody>
-                                <tr th:each="categoria : ${categorias}">
-                                    <td th:text="${categoria.nombre}"></td>
-                                    <td> <input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
-                                    <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
-                                    <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
+                                <tr th:each="bodega : ${bodegas}">
+                                    <td th:text="${bodega.nombre}"></td>
+                                    <td> <input type="checkbox" name="activa" th:checked="${bodega.activo}" disabled="true"></td>
+                                    <td><a th:href="@{/bodega/eliminar/} + ${bodega.idBodega}">Eliminar</a></td>
+                                    <td><a th:href="@{/bodega/modificar/} + ${bodega.idBodega}">Modificar</a></td>
                                 </tr>
                             </tbody>
 
@@ -66,8 +66,8 @@
 
                     </div>
 
-                    <div th:if="${categorias == null or categorias.empty}">
-                        No hay categorias que mostrar...
+                    <div th:if="${bodegas == null or bodegas.empty}">
+                        No hay bodegas que mostrar...
                     </div>
                 </div>
             </div>
