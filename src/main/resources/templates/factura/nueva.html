@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
       xmlns="http://www.w3.org/1999/xhtml">
-
+      <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     <head>
         <title>Crome</title>
         <meta charset="UTF-8">
     </head>
     <body>
+        <ul class="ulx">
+            <li class="lix"><a class="active" href="#home"></a></li>
+            <li class="lix"><a href="#news"></a></li>
+            <li class="lix"><a href="#contact"></a></li>
+            <li class="lix"><a href="#about"></a></li> 
+        </ul>
+        <div style="font-family: 'Poppins', sans-serif;">
+<ul class="ule">
+  <li class="lie"><a class="active" th:href="@{/}">Inicio</a></li>
+  <li  class="lie"><a th:href="@{/usuario/listado/}">Usuarios</a></li>
+  <li  class="lie"><a th:href="@{/cliente/listado/}">Clientes</a></li>
+  <li  class="lie"><a th:href="@{/producto/listado/}">Productos</a></li>
+  <li  class="lie"><a th:href="@{/categoria/listado/}">Categorias</a></li>
+  <li  class="lie"><a th:href="@{/bodega/listado/}">Bodegas</a></li>
+  <li  class="lie"><a th:href="@{/factura/listado/}">Facturas</a></li>
+  </ul>
         <div>
+            <div class="content">
             <h2> Datos de Factura </h2>
             <br/>
-            <a th:href="@{/factura/listado}">Regresar</a>
+            <a style="text-decoration: underline;" th:href="@{/factura/listado}">Regresar</a>
             <br/><br/>
             <form th:action="@{/factura/guardar}" method="post" th:object="${factura}">
                 <input type="hidden" name="idFactura" th:field="*{idFactura}"/>
                 <br/>
                 <label for="producto">Producto: </label>
-                <select th:field="*{idProducto}">
+                <select style="width:200px;" th:field="*{idProducto}">
                     <option th:each="producto: ${productos}"
                             th:value="${producto.idProducto}"
                             th:text="${producto.nombre}" 
                             /> 
+                            
                       
                     
                     <br/> 
                 </select>
                 <label for="clente">Cliente: </label>
-                <select th:field="*{idCliente}">
+                <select style="width:200px;" th:field="*{idCliente}">
                     <option th:each="cliente: ${clientes}" 
                             th:value="${cliente.idCliente}"
                             th:text="${cliente.nombre}"/> 
+                           
                     <br/> 
                 </select> 
-
+                <br/>
+                <br/>
                 <label for="total">Total: </label>    
-                <input type="number" name="total" th:field="*{total}" value=1/><br/>
+                <input type="number" name="total" th:field="*{total}" value=1/ class="form-control"><br/>
                 <br/>
                 
-                <input type="submit" name="guardar" value="Guardar"/>
+                <input type="submit" name="guardar" value="Guardar" class="Guardar"/>
             </form> 
         </div>
+    </div>
+    </div>
     </body> 
 </html>

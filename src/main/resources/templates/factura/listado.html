@@ -5,21 +5,31 @@
     <head>
         <title>Factura</title>
         <meta charset="UTF-8">
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large w3-hide-large" >Close &times;</button>
-            <a href="../cliente/listado.html" class="w3-bar-item w3-button" >Clientes</a>
-
-            <a href="../producto/listado.html" class="w3-bar-item w3-button">Productos</a>
-            <a href="listado.html" class="w3-bar-item w3-button">Categorias</a>
-        </div>
+        <ul class="ulx">
+            <li class="lix"><a class="active" href="#home"></a></li>
+            <li class="lix"><a href="#news"></a></li>
+            <li class="lix"><a href="#contact"></a></li>
+            <li class="lix"><a href="#about"></a></li> 
+        </ul>
+        <div style="font-family: 'Poppins', sans-serif;">
+            <ul class="ule">
+                <li class="lie"><a class="active" th:href="@{/}">Inicio</a></li>
+                <li  class="lie"><a th:href="@{/usuario/listado/}">Usuarios</a></li>
+                <li  class="lie"><a th:href="@{/cliente/listado/}">Clientes</a></li>
+                <li  class="lie"><a th:href="@{/producto/listado/}">Productos</a></li>
+                <li  class="lie"><a th:href="@{/categoria/listado/}">Categorias</a></li>
+                <li  class="lie"><a th:href="@{/bodega/listado/}">Bodegas</a></li>
+                <li  class="lie"><a th:href="@{/factura/listado/}">Facturas</a></li>
+            </ul>
 
         <div class="w3-main" style="margin-left:200px">
             <div class="w3-teal">
                 <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
                 <div class="w3-container">
-                    <h1>Crome</h1>
+                    <h1>Listado Factura</h1>
                 </div>
             </div>
 
@@ -27,12 +37,14 @@
 
         </div>
         <div>
-            <h2>Listado de Facturas</h2>
+            <div class="content">
+            <h2>Facturas</h2>
             <br/>
-            <a th:href="@{/factura/nueva}">Nueva Factura</a>
+            <a style=" color: #57b846;   text-align: right; " th:href="@{/factura/nueva}">Nueva Factura +</a>
             <br/><br/>
+            <div class="boxx">
             <div th:if="${facturas != null and !facturas.empty}">
-                <table border="1">
+                <table class="customers">
                     <thead>
                         <tr>
                             <th>ID Factura</th>
@@ -56,7 +68,9 @@
             <div th:if="${facturas == null or facturas.empty}">
                 No hay categorias que mostrar...
             </div>
-
         </div>
+        </div>
+    </div>
+    </div>
     </body>
 </html>

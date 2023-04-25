@@ -7,18 +7,35 @@
         <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-            <div class="login-form">
-                <h1>Chrome Store</h1>
-                <br/>
-                <h2>Inicio de Sesion</h2>
-                <form action="@{/login}" method="post">
-                    <br/>
-                    <p>Nombre de Usuario</p>
-                    <input type="text" name="user" placeholder="Nombre de Usuario">
-                    <p>Clave</p>
-                    <input type="text" name="clave" placeholder="Clave">
-                    <button type="submit" th:href="@{/usuario/nuevo}">Iniciar Sesion</button>
-                </form>
+        <ul class="ulx">
+            <li class="lix"><a class="active" href="#home"></a></li>
+            <li class="lix"><a href="#news"></a></li>
+            <li class="lix"><a href="#contact"></a></li>
+            <li class="lix"><a href="#about"></a></li> 
+        </ul>
+        <div style="font-family: 'Poppins', sans-serif;">
+            <ul class="ule">
+                <li class="lie"><a class="active" th:href="@{/}">Inicio</a></li>
+                <li  class="lie"><a th:href="@{/usuario/listado/}">Usuarios</a></li>
+                <li  class="lie"><a th:href="@{/cliente/listado/}">Clientes</a></li>
+                <li  class="lie"><a th:href="@{/producto/listado/}">Productos</a></li>
+                <li  class="lie"><a th:href="@{/categoria/listado/}">Categorias</a></li>
+                <li  class="lie"><a th:href="@{/bodega/listado/}">Bodegas</a></li>
+                <li  class="lie"><a th:href="@{/factura/listado/}">Facturas</a></li>
+            </ul>
+            <div class="w3-main" style="margin-left:200px">
+                <div class="w3-teal">
+                    <button class="w3-button w3-teal w3-xlarge w3-hide-large">&#9776;</button>
+                    <div class="w3-container">
+                        <h1>Crome Store</h1>
+                    </div>
+                </div>
+    
+    
+    
             </div>
+            <div>
+        </div>
     </body>
 </html>
+
